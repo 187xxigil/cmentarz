@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Moja Strona</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        /* ---- fade-in przy wejściu ---- */
+        body {
+            opacity: 0;
+            transition: opacity 0.5s;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
+            color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        body.fade-in {
+            opacity: 1;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        
+        /* LOGO */
+        .logo {
+            margin-bottom: 50px;
+        }
+
+        .logo img {
+            max-width: 220px;
+            height: auto;
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.08));
+        }
+
+        /* LINKI */
+        .links {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .link-box {
+            padding: 25px;
+            border-radius: 18px;
+            border: 1px solid #2a2a2a;
+            background: #141414;
+            transition: 0.3s ease;
+            box-shadow: 0 0 15px rgba(0,0,0,0.4);
+        }
+
+        .link-box:hover {
+            background: #1f1f1f;
+            border-color: #444;
+            transform: translateY(-4px);
+            box-shadow: 0 0 25px rgba(0,0,0,0.7);
+        }
+
+        a {
+            text-decoration: none;
+            color: #e0e0e0;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        a:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 700px) {
+            .links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+
+    <!-- LOGO -->
+    <div class="logo">
+        <img src="Untitled-2 (2).png" alt="Logo">
+    </div>
+
+    <!-- LINKI -->
+    <div class="links">
+        <div class="link-box">
+            <a href="bojesieokien.html" class="fade-link">bojesieokien</a>
+        </div>
+
+        <div class="link-box">
+            <a href="krystaltears.html" class="fade-link">krystaltears</a>
+        </div>
+
+        <div class="link-box">
+            <a href="xxigil.html" target="_blank" class="fade-link">xxigil</a>
+        </div>
+
+        <div class="link-box">
+            <a href="syrupsaint.html" target="_blank" class="fade-link">syrupsaint</a>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    // fade-in przy wejściu
+    window.addEventListener('DOMContentLoaded', () => {
+        document.body.classList.add('fade-in');
+    });
+
+    // fade-out przy kliknięciu linka
+    document.querySelectorAll('.fade-link').forEach(link => {
+        link.addEventListener('click', function(e){
+            e.preventDefault(); // zatrzymujemy natychmiastowe przejście
+            document.body.style.opacity = 0; // fade-out
+            setTimeout(() => {
+                window.location.href = this.href; // po 500ms przechodzimy
+            }, 500);
+        });
+    });
+</script>
+
+</body>
+</html>
