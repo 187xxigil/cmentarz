@@ -7,6 +7,8 @@
 
     <style>
         body {
+            opacity: 1; /* od razu widoczne */
+            transition: opacity 0.5s;
             margin: 0;
             font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
@@ -102,9 +104,12 @@
     </div>
 
     <script>
-        // Przycisk powrotu
+        // fade-out przy kliknięciu przycisku powrotu
         document.getElementById('back-home').addEventListener('click', () => {
-            window.location.href = "index.html"; // zmień na adres swojej strony głównej
+            document.body.style.opacity = 0; // fade-out
+            setTimeout(() => {
+                window.location.href = "index.html"; // przekierowanie na stronę główną
+            }, 500); // 500ms jak przy fade-out linków
         });
     </script>
 </body>
