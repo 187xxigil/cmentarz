@@ -7,6 +7,8 @@
 
     <style>
         body {
+            opacity: 1;
+            transition: opacity 0.5s;
             margin: 0;
             font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
@@ -53,10 +55,30 @@
             text-decoration: none;
             font-size: 22px;
             transition: color 0.2s;
+            display: block; /* cała powierzchnia klikalna */
         }
 
         .link-box a:hover {
             color: #ff3e00;
+        }
+
+        /* Przycisk powrotu */
+        #back-home {
+            margin-top: 30px;
+            padding: 12px 25px;
+            border-radius: 12px;
+            background-color: #141414;
+            color: #e0e0e0;
+            border: 1px solid #2a2a2a;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 20px;
+        }
+
+        #back-home:hover {
+            background-color: #1f1f1f;
+            border-color: #444;
         }
     </style>
 </head>
@@ -71,13 +93,36 @@
         <!-- Linki -->
         <div class="links">
             <div class="link-box">
-                <a href="https://www.instagram.com/bojesieokien/">instagram</a>
+                <a href="https://www.instagram.com/bojesieokien/" class="fade-link">instagram</a>
             </div>
             <div class="link-box">
-                <a href="https://soundcloud.com/pdw666">soundcloud</a>
+                <a href="https://soundcloud.com/pdw666" class="fade-link">soundcloud</a>
             </div>
         </div>
-    </div>
-</body>
 
+        <!-- Przycisk powrotu na główną -->
+        <button id="back-home">powrot</button>
+    </div>
+
+    <script>
+        // fade-out przy kliknięciu linków
+        document.querySelectorAll('.fade-link').forEach(link => {
+            link.addEventListener('click', function(e){
+                e.preventDefault();
+                document.body.style.opacity = 0;
+                setTimeout(() => {
+                    window.location.href = this.href;
+                }, 500);
+            });
+        });
+
+        // fade-out przy kliknięciu przycisku powrotu
+        document.getElementById('back-home').addEventListener('click', () => {
+            document.body.style.opacity = 0;
+            setTimeout(() => {
+                window.location.href = "index.html";
+            }, 500);
+        });
+    </script>
+</body>
 </html>
