@@ -85,6 +85,25 @@
             color: #ffffff;
         }
 
+        /* PRZYCISK POWROTU */
+        #back-home {
+            margin-top: 30px;
+            padding: 15px 30px;
+            border-radius: 12px;
+            background-color: #141414;
+            color: #e0e0e0;
+            border: 1px solid #2a2a2a;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 18px;
+        }
+
+        #back-home:hover {
+            background-color: #1f1f1f;
+            border-color: #444;
+        }
+
         @media (max-width: 700px) {
             .links {
                 grid-template-columns: 1fr;
@@ -124,6 +143,9 @@
         </a>
     </div>
 
+    <!-- PRZYCISK POWROTU -->
+    <button id="back-home">Powrót na stronę główną</button>
+
 </div>
 
 <script>
@@ -135,12 +157,17 @@
     // fade-out przy kliknięciu linka na cały box
     document.querySelectorAll('.fade-link').forEach(link => {
         link.addEventListener('click', function(e){
-            e.preventDefault(); // zatrzymujemy natychmiastowe przejście
-            document.body.style.opacity = 0; // fade-out
+            e.preventDefault(); 
+            document.body.style.opacity = 0; 
             setTimeout(() => {
-                window.location.href = this.href; // po 500ms przechodzimy
+                window.location.href = this.href;
             }, 500);
         });
+    });
+
+    // PRZYCISK POWROTU
+    document.getElementById('back-home').addEventListener('click', () => {
+        window.location.href = "index.html"; // podmień na stronę główną
     });
 </script>
 
