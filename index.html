@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <link rel="icon" href="Nowy projekt (46).png" type="image/png">
     <meta charset="UTF-8">
     <title>cmentarzcmentarzcmentarz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
-        /* ---- fade-in przy wejściu ---- */
         body {
-            opacity: 0;
-            transition: opacity 0.5s;
             margin: 0;
             font-family: Arial, sans-serif;
             background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
@@ -21,128 +17,95 @@
             min-height: 100vh;
         }
 
-        body.fade-in {
-            opacity: 1;
-        }
-
         .container {
             width: 100%;
-            max-width: 900px;
+            max-width: 400px;
             text-align: center;
             padding: 40px 20px;
+            background-color: rgba(30, 30, 30, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
 
-        /* LOGO */
-        .logo {
-            margin-bottom: 50px;
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 15px auto;
+            object-fit: cover;
+            border: 3px solid #ffffff;
         }
 
-        .logo img {
-            max-width: 220px;
-            height: auto;
-            filter: drop-shadow(0 0 20px rgba(255,255,255,0.08));
-        }
-
-        /* LINKI */
-        .links {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px; /* odstępy między kolumnami i wierszami */
-        }
-
-        .links > a:last-child {
-            grid-column: 1 / -1; /* ostatni link rozciąga się na całą szerokość */
-        }
-
-        .link-box {
-            padding: 25px;
-            border-radius: 18px;
-            border: 1px solid #2a2a2a;
-            background: #141414;
-            transition: 0.3s ease;
-            box-shadow: 0 0 15px rgba(0,0,0,0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .link-box:hover {
-            background: #1f1f1f;
-            border-color: #444;
-            transform: translateY(-4px);
-            box-shadow: 0 0 25px rgba(0,0,0,0.7);
-        }
-
-        a {
-            text-decoration: none;
-            color: #e0e0e0;
+        .nickname {
+            font-size: 28px;
             font-weight: bold;
-            letter-spacing: 1px;
-            display: block; /* cała zawartość linka klikalna */
+            margin-bottom: 30px;
         }
 
-        a:hover {
-            color: #ffffff;
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        @media (max-width: 700px) {
-            .links {
-                grid-template-columns: 1fr;
-            }
+        .link-box a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 22px;
+            transition: color 0.2s;
+        }
+
+        .link-box a:hover {
+            color: #ff3e00;
+        }
+
+        /* Przycisk powrotu */
+        #back-home {
+            margin-top: 30px;
+            padding: 12px 25px;
+            border-radius: 12px;
+            background-color: #141414;
+            color: #e0e0e0;
+            border: 1px solid #2a2a2a;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 20px;
+        }
+
+        #back-home:hover {
+            background-color: #1f1f1f;
+            border-color: #444;
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <!-- Avatar -->
+        <img src="avatars-W5LvY92dxh8yEhjb-klZ3Xw-t500x500.jpg" alt="Avatar" class="avatar">
+        
+        <!-- Nick -->
+        <div class="nickname">okae</div>
 
-<div class="container">
+        <!-- Linki -->
+        <div class="links">
+            <div class="link-box">
+                <a href="https://www.instagram.com/ogokae/">instagram</a>
+            </div>
+            <div class="link-box">
+                <a href="https://soundcloud.com/kacperambrozy">soundcloud</a>
+            </div>
+        </div>
 
-    <!-- LOGO -->
-    <div class="logo">
-        <img src="Untitled-2 (2).png" alt="Logo">
+        <!-- Przycisk powrotu -->
+        <button id="back-home">Powrót na stronę główną</button>
     </div>
 
-    <!-- LINKI -->
-    <div class="links">
-        <a href="bojesieokien.html" class="fade-link">
-            <div class="link-box">bojesieokien</div>
-        </a>
-
-        <a href="krystaltears.html" class="fade-link">
-            <div class="link-box">krystaltears</div>
-        </a>
-
-        <a href="xxigil.html" target="_blank" class="fade-link">
-            <div class="link-box">xxigil</div>
-        </a>
-
-        <a href="syrupsaint.html" target="_blank" class="fade-link">
-            <div class="link-box">syrupsaint</div>
-        </a>
-
-        <a href="https://www.instagram.com" target="_blank" class="fade-link">
-            <div class="link-box">Instagram</div>
-        </a>
-    </div>
-
-</div>
-
-<script>
-    // fade-in przy wejściu
-    window.addEventListener('DOMContentLoaded', () => {
-        document.body.classList.add('fade-in');
-    });
-
-    // fade-out przy kliknięciu linka na cały box
-    document.querySelectorAll('.fade-link').forEach(link => {
-        link.addEventListener('click', function(e){
-            e.preventDefault(); // zatrzymujemy natychmiastowe przejście
-            document.body.style.opacity = 0; // fade-out
-            setTimeout(() => {
-                window.location.href = this.href; // po 500ms przechodzimy
-            }, 500);
+    <script>
+        // Przycisk powrotu
+        document.getElementById('back-home').addEventListener('click', () => {
+            window.location.href = "index.html"; // podmień na adres swojej strony głównej
         });
-    });
-</script>
-
+    </script>
 </body>
 </html>
