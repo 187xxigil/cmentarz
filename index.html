@@ -165,9 +165,12 @@
         });
     });
 
-    // PRZYCISK POWROTU
+    // PRZYCISK POWROTU z fade-out
     document.getElementById('back-home').addEventListener('click', () => {
-        window.location.href = "index.html"; // podmień na stronę główną
+        document.body.style.opacity = 0; // fade-out
+        setTimeout(() => {
+            window.location.href = "index.html"; // strona główna
+        }, 500);
     });
 </script>
 
