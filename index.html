@@ -32,7 +32,6 @@
             padding: 40px 20px;
         }
 
-        
         /* LOGO */
         .logo {
             margin-bottom: 50px;
@@ -48,7 +47,11 @@
         .links {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 25px;
+            gap: 20px; /* odstępy między kolumnami i wierszami */
+        }
+
+        .links > a:last-child {
+            grid-column: 1 / -1; /* ostatni link rozciąga się na całą szerokość */
         }
 
         .link-box {
@@ -58,6 +61,9 @@
             background: #141414;
             transition: 0.3s ease;
             box-shadow: 0 0 15px rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .link-box:hover {
@@ -72,6 +78,7 @@
             color: #e0e0e0;
             font-weight: bold;
             letter-spacing: 1px;
+            display: block; /* cała zawartość linka klikalna */
         }
 
         a:hover {
@@ -89,7 +96,6 @@
 
 <div class="container">
 
-
     <!-- LOGO -->
     <div class="logo">
         <img src="Untitled-2 (2).png" alt="Logo">
@@ -97,21 +103,25 @@
 
     <!-- LINKI -->
     <div class="links">
-        <div class="link-box">
-            <a href="bojesieokien.html" class="fade-link">bojesieokien</a>
-        </div>
+        <a href="bojesieokien.html" class="fade-link">
+            <div class="link-box">bojesieokien</div>
+        </a>
 
-        <div class="link-box">
-            <a href="krystaltears.html" class="fade-link">krystaltears</a>
-        </div>
+        <a href="krystaltears.html" class="fade-link">
+            <div class="link-box">krystaltears</div>
+        </a>
 
-        <div class="link-box">
-            <a href="xxigil.html" target="_blank" class="fade-link">xxigil</a>
-        </div>
+        <a href="xxigil.html" target="_blank" class="fade-link">
+            <div class="link-box">xxigil</div>
+        </a>
 
-        <div class="link-box">
-            <a href="syrupsaint.html" target="_blank" class="fade-link">syrupsaint</a>
-        </div>
+        <a href="syrupsaint.html" target="_blank" class="fade-link">
+            <div class="link-box">syrupsaint</div>
+        </a>
+
+        <a href="okae.html" target="_blank" class="fade-link">
+            <div class="link-box">okae</div>
+        </a>
     </div>
 
 </div>
@@ -122,7 +132,7 @@
         document.body.classList.add('fade-in');
     });
 
-    // fade-out przy kliknięciu linka
+    // fade-out przy kliknięciu linka na cały box
     document.querySelectorAll('.fade-link').forEach(link => {
         link.addEventListener('click', function(e){
             e.preventDefault(); // zatrzymujemy natychmiastowe przejście
@@ -135,6 +145,4 @@
 </script>
 
 </body>
-
 </html>
-
