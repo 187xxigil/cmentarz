@@ -127,18 +127,27 @@
 </div>
 
 <script>
-    // fade-in przy wejściu
-    window.addEventListener('DOMContentLoaded', () => {
-        document.body.classList.add('fade-in');
+    // funkcja fade-in, działa też przy powrocie z back button
+    function fadeInBody() {
+        document.body.style.opacity = 0;
+        setTimeout(() => {
+            document.body.classList.add('fade-in');
+        }, 10);
+    }
+
+    // fade-in przy wejściu i przy powrocie z back button
+    window.addEventListener('DOMContentLoaded', fadeInBody);
+    window.addEventListener('pageshow', (event) => {
+        if (event.persisted) fadeInBody();
     });
 
     // fade-out przy kliknięciu linka na cały box
     document.querySelectorAll('.fade-link').forEach(link => {
         link.addEventListener('click', function(e){
-            e.preventDefault(); // zatrzymujemy natychmiastowe przejście
-            document.body.style.opacity = 0; // fade-out
+            e.preventDefault();
+            document.body.style.opacity = 0;
             setTimeout(() => {
-                window.location.href = this.href; // po 500ms przechodzimy
+                window.location.href = this.href;
             }, 500);
         });
     });
