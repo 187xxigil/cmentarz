@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
+        /* ---- fade-in przy wejściu ---- */
         body {
             opacity: 0;
             transition: opacity 0.5s;
@@ -31,6 +32,7 @@
             padding: 40px 20px;
         }
 
+        /* LOGO */
         .logo {
             margin-bottom: 50px;
         }
@@ -41,10 +43,11 @@
             filter: drop-shadow(0 0 20px rgba(255,255,255,0.08));
         }
 
+        /* LINKI */
         .links {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
+            gap: 20px; /* odstępy między kolumnami i wierszami */
         }
 
         .links > a:last-child {
@@ -75,7 +78,7 @@
             color: #e0e0e0;
             font-weight: bold;
             letter-spacing: 1px;
-            display: block;
+            display: block; /* cała zawartość linka klikalna */
         }
 
         a:hover {
@@ -92,10 +95,13 @@
 <body>
 
 <div class="container">
+
+    <!-- LOGO -->
     <div class="logo">
         <img src="Untitled-2 (2).png" alt="Logo">
     </div>
 
+    <!-- LINKI -->
     <div class="links">
         <a href="bojesieokien.html" class="fade-link">
             <div class="link-box">bojesieokien</div>
@@ -117,22 +123,25 @@
             <div class="link-box">okae</div>
         </a>
     </div>
+
 </div>
 
 <script>
-    // reset i fade-in, działa przy wejściu i powrocie z back button
-    function resetFade() {
+    // funkcja fade-in, działa też przy powrocie z back button
+    function fadeInBody() {
         document.body.style.opacity = 0;
-        document.body.classList.remove('fade-in');
         setTimeout(() => {
             document.body.classList.add('fade-in');
         }, 10);
     }
 
-    window.addEventListener('DOMContentLoaded', resetFade);
-    window.addEventListener('pageshow', resetFade);
+    // fade-in przy wejściu i przy powrocie z back button
+    window.addEventListener('DOMContentLoaded', fadeInBody);
+    window.addEventListener('pageshow', (event) => {
+        if (event.persisted) fadeInBody();
+    });
 
-    // fade-out przy kliknięciu linka
+    // fade-out przy kliknięciu linka na cały box
     document.querySelectorAll('.fade-link').forEach(link => {
         link.addEventListener('click', function(e){
             e.preventDefault();
